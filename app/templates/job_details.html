@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ job['Job Role'] }} Details</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.initialize({ startOnLoad: true });
+    </script>
+</head>
+<body>
+    <header>
+        <h1 class="title">{{ job['Job Role'] }} Details</h1>
+        <nav class="navbar">
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/roadmaps">Roadmaps</a></li>
+                <li><a href="/skills">Skills</a></li>
+                <li><a href="/visualizations">Visualizations</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="container">
+        <section class="card">
+            <h2>Description</h2>
+            <p>{{ job['Description'] }}</p>
+        </section>
+
+        <section class="card">
+            <h2>Required Skills</h2>
+            <p>{{ job['Required Skills'] }}</p>
+        </section>
+
+        <section class="card">
+            <h2>Recommended Certifications</h2>
+            <p>{{ job['Recommended Certifications'] }}</p>
+        </section>
+
+        <section class="card">
+            <h2>Educational Requirements</h2>
+            <p>{{ job['Educational Requirements'] }}</p>
+        </section>
+
+        <section class="card">
+            <h2>Industry Demand Level</h2>
+            <p>{{ job['Industry Demand Level'] }}</p>
+        </section>
+
+        <section class="card">
+            <h2>Average Salary</h2>
+            <p>₹{{ job['Average Salary (₹)'] }}</p>
+        </section>
+
+        <section class="card">
+            <h2>Suggested Roadmap</h2>
+            <div class="mermaid">
+                graph TD
+                {% for step in job['Suggested Roadmap'].split('→') %}
+                    step{{ loop.index }}["{{ step.strip() }}"]
+                    {% if not loop.last %}
+                    step{{ loop.index }} --> step{{ loop.index + 1 }}
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </section>
+    </main>
+</body>
+</html>

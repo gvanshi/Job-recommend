@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analysis and Roadmap</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+    <h1>Analysis and Roadmap</h1>
+
+    <!-- Graphs Section -->
+    <h2>Data Analysis Visualizations</h2>
+    <div id="graphs">
+        {% for plot in plots %}
+        <div class="graph">
+            <img src="{{ plot }}" alt="Data Analysis Graph">
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- Job Roadmap Section -->
+    <h2>Job Roadmap</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Job Role</th>
+                <th>Description</th>
+                <th>Required Skills</th>
+                <th>Recommended Certifications</th>
+                <th>Educational Requirements</th>
+                <th>Suggested Roadmap</th>
+                <th>Industry Demand Level</th>
+                <th>Average Salary (₹)</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for job in roadmap_data %}
+            <tr>
+                <td>{{ job['Job Role'] }}</td>
+                <td>{{ job['Description'] }}</td>
+                <td>{{ job['Required Skills'] }}</td>
+                <td>{{ job['Recommended Certifications'] }}</td>
+                <td>{{ job['Educational Requirements'] }}</td>
+                <td>{{ job['Suggested Roadmap'] }}</td>
+                <td>{{ job['Industry Demand Level'] }}</td>
+                <td>{{ job['Average Salary (₹)'] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

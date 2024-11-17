@@ -1,0 +1,168 @@
+/* General Styling */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+/* Header Styling */
+header {
+    background-color: #0077b6;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0 0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+nav ul li a:hover {
+    background-color: white;
+    color: #0077b6;
+}
+
+/* Main Content */
+main {
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 20px;
+}
+
+/* Section Styling */
+section {
+    margin-bottom: 30px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Section Titles */
+section h2 {
+    font-size: 1.8rem;
+    color: #0077b6;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+/* Skills Chart Section */
+.skills-chart canvas {
+    max-width: 100%;
+    height: 500px; /* Increased height for larger graphs */
+    border-radius: 8px;
+    margin: 20px auto;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Skills Categories */
+.skills-categories {
+    margin-top: 20px;
+}
+
+.category {
+    margin-bottom: 15px;
+    padding: 10px 15px;
+    border: 1px solid #0077b6;
+    border-radius: 8px;
+    background-color: #e1f0fc;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.category h3 {
+    font-size: 1.3rem;
+    margin-bottom: 5px;
+    color: #0077b6;
+}
+
+.category p {
+    font-size: 1rem;
+    color: #333;
+    margin: 0;
+}
+
+/* Resources and Interview Preparation Section */
+.resources ul, .interview-prep ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.resources ul li, .interview-prep ul li {
+    margin-bottom: 10px;
+}
+
+.resources ul li a, .interview-prep ul li a {
+    color: #0077b6;
+    text-decoration: none;
+    font-size: 1rem;
+    display: inline-block;
+    transition: color 0.3s;
+}
+
+.resources ul li a:hover, .interview-prep ul li a:hover {
+    color: #005f8d;
+    text-decoration: underline;
+}
+
+/* Coding Practice Section */
+.coding-practice a {
+    color: #0077b6;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: color 0.3s;
+}
+
+.coding-practice a:hover {
+    color: #005f8d;
+    text-decoration: underline;
+}
+
+/* Popular Skills Section */
+.popular-skills ol {
+    padding-left: 20px;
+    margin: 20px 0;
+}
+
+.popular-skills ol li {
+    font-size: 1.1rem;
+    color: #333;
+    margin: 10px 0;
+}
+
+.popular-skills ol li::marker {
+    color: #0077b6;
+}
+
+/* Trends Chart */
+.skill-trends canvas {
+    max-width: 100%;
+    height: 500px; /* Increased height for larger graphs */
+    border-radius: 8px;
+    margin: 20px auto;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}

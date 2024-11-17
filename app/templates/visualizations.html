@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Data Visualizations</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Data Visualizations</h1>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/roadmaps">Roadmaps</a></li>
+                <li><a href="/skills">Skills</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="visualization-container">
+            {% for plot in plots %}
+            <div class="visualization-card">
+                <h2>Visualization {{ loop.index }}</h2>
+                <p>
+                    {% if "students_alignment" in plot %}
+                        This chart represents how well students feel their technical courses align with real-world industry needs, showcasing their perceptions about the relevance of their academic curriculum.
+                    {% elif "programming_confidence" in plot %}
+                        These bar charts compare the programming languages students have learned with their confidence in using them for industry-relevant tasks, offering insights into their preparedness for technical roles.
+                    {% elif "educators_methods" in plot %}
+                        This bar chart showcases the teaching methods most commonly used by educators, indicating their preferences for delivering effective learning experiences and engaging students.
+                    {% elif "graduate_preparedness" in plot %}
+                        This chart reflects the industry's perception of how well-prepared recent graduates are for technical industry roles, highlighting areas of strength and weaknesses in their technical skills.
+                    {% elif "technical_skills" in plot %}
+                        This chart highlights the key technical skills that industry professionals expect graduates to possess, providing valuable insights into the most in-demand skills in the workforce.
+                    {% elif "key_knowledge_gaps" in plot %}
+                        This bar chart identifies the key knowledge gaps in recent graduates entering various industries, signaling areas that need improvement to better prepare students for real-world applications.
+                    {% elif "hands_on_training_value" in plot %}
+                        This visualization emphasizes the value of hands-on training, such as internships and co-op programs, in preparing students for industry roles and their overall effectiveness in bridging the skills gap.
+                    {% else %}
+                        Description not available for this visualization.
+                    {% endif %}
+                </p>
+                <img src="{{ plot }}" alt="Visualization {{ loop.index }}">
+            </div>
+            {% endfor %}
+        </div>
+    </main>
+</body>
+</html>

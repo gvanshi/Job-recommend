@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Skills Overview</title>
+    <link rel="stylesheet" href="/static/css/sty.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Skills Overview</h1>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/roadmaps">Roadmaps</a></li>
+                <li><a href="/visualizations">Visualizations</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <!-- Skill Distribution Chart -->
+        <section class="skills-chart">
+            <h2>Skills Distribution</h2>
+            <canvas id="skillsChart"></canvas>
+        </section>
+
+        <!-- Skill Categories -->
+        <section class="skills-categories">
+            <h2>Skill Categories</h2>
+            <div class="category">
+                <h3>Programming Languages</h3>
+                <p>Python, Java, C++, etc.</p>
+            </div>
+            <div class="category">
+                <h3>Tools</h3>
+                <p>Git, Docker, Jenkins, etc.</p>
+            </div>
+            <div class="category">
+                <h3>Soft Skills</h3>
+                <p>Communication, Teamwork, Critical Thinking, etc.</p>
+            </div>
+        </section>
+
+        <!-- Skill Trends -->
+        <section class="skill-trends">
+            <h2>Skill Trends</h2>
+            <canvas id="trendsChart"></canvas>
+        </section>
+
+        <!-- Top Skills -->
+        <section class="popular-skills">
+            <h2>Top 5 Popular Skills</h2>
+            <ol>
+                {% for skill, count in top_skills %}
+                <li>{{ skill }} ({{ count }} times)</li>
+                {% endfor %}
+            </ol>
+        </section>
+
+      
+        <section class="resources">
+            <h2>Recommended Resources</h2>
+            <ul>
+                <li><a href="https://github.com/practical-tutorials/project-based-learning" target="_blank">Project Based Learning</a></li>
+                <li><a href="https://github.com/microsoft/Web-Dev-For-Beginners" target="_blank">Web Dev for Beginners</a></li>
+                <li><a href="https://github.com/ashishps1/awesome-leetcode-resources" target="_blank">Awesome LeetCode Resources</a></li>
+                <li><a href="https://github.com/EbookFoundation/free-programming-books" target="_blank">Free Programming Books</a></li>
+                <li><a href="https://github.com/sindresorhus/awesome" target="_blank">Awesome</a></li>
+            </ul>
+        </section>
+
+        <!-- Interview Preparation -->
+        <section class="interview-prep">
+            <h2>Interview Preparation Websites</h2>
+            <ul>
+                <li><a href="https://grow.google/certificates/interview-warmup/" target="_blank">Google Interview Warmup</a></li>
+                <li><a href="https://interviewbuddy.net/" target="_blank">Interview Buddy</a></li>
+                <li><a href="https://www.pramp.com/#/" target="_blank">Pramp</a></li>
+            </ul>
+        </section>
+
+        <!-- Coding Practice -->
+        <section class="coding-practice">
+            <h2>Coding Practice</h2>
+            <p>
+                Check out <a href="https://exercism.org/" target="_blank">Exercism</a> for structured exercises in various programming languages.
+            </p>
+        </section>
+    </main>
+
+    <!-- Charts Script -->
+    <script>
+        // Dynamic Chart for Skills Distribution
+        const skillsCtx = document.getElementById('skillsChart').getContext('2d');
+        const skillsChart = new Chart(skillsCtx, {
+            type: 'bar',
+            data: {
+                labels: {{ skill_labels | safe }},
+                datasets: [{
+                    label: 'Number of Students',
+                    data: {{ skill_counts | safe }},
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        // Skill Trends Line Chart
+        const trendsCtx = document.getElementById('trendsChart').getContext('2d');
+        const trendsChart = new Chart(trendsCtx, {
+            type: 'line',
+            data: {
+                labels: ['2018', '2019', '2020', '2021', '2022'], // Example years
+                datasets: [{
+                    label: 'Python',
+                    data: [20, 30, 40, 50, 70], // Example data
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    fill: false
+                }, {
+                    label: 'Java',
+                    data: [30, 35, 50, 45, 60],
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    fill: false
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

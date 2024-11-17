@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recommender System</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <script>
+        async function getRecommendation() {
+            // Collect user input
+            const skills = document.getElementById('skills').value;
+            const certifications = document.getElementById('certifications').value;
+            const demandLevel = document.getElementById('demandLevel').value;
+
+            // Prepare data for the API request
+            const requestData = {
+                skills: skills,
+                certifications: certifications,
+                demand_level: demandLevel
+            };
+
+            // Fetch recommendation from the API
+            const response = await fetch('/recommend', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(requestData)
+            });
+
+            // Parse and display the result
+            const result = await response.json();
+            document.getElementById('recommendation-result').textContent = `Recommended Job Role: ${result.recommended_job}`;
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Welcome to the Recommender System</h1>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/roadmaps">Roadmaps</a></li>
+                <li><a href="/skills">Skills</a></li>
+                <li><a href="/visualizations">Visualizations</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="recommendation-section">
+            <h2>Find Your Recommended Job Role</h2>
+            <!-- The form triggers getRecommendation() on submit -->
+            <form onsubmit="event.preventDefault(); getRecommendation();">
+                <label for="skills">Skills (comma-separated):</label>
+                <input type="text" id="skills" placeholder="e.g., Python, Java, Docker" required><br>
+
+                <label for="certifications">Certifications (comma-separated):</label>
+                <input type="text" id="certifications" placeholder="e.g., AWS, Google Cloud" required><br>
+
+                <label for="demandLevel">Industry Demand Level (1-5):</label>
+                <input type="number" id="demandLevel" min="1" max="5" placeholder="e.g., 3" required><br>
+
+                <button type="submit">Get Recommendation</button>
+            </form>
+            <!-- This will display the result of the recommendation -->
+            <p id="recommendation-result" class="result"></p>
+        </section>
+    </main>
+</body>
+</html>
